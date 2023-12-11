@@ -48,9 +48,24 @@ app.get('/make-post', (req, res) => {
 
 
 //CREATE
-app.post('/post-blog-api', (req, res) => {
+app.post('/post-blog-api', async (req, res) => {
     try{
+      const {blogname, email, subject, message} = req.body;
+      console.log(req.body);
 
+      const newBlogDetail = new BlogModel({
+        name: blogname,
+        email: email,
+        subject: subject,
+        message: message
+      });
+
+      const savedBlog = await newBlogDetail.save();
+      res.status(201).redirect('/');
+    //   res.status(201).json({
+        
+    //     savedBlog
+    //   })
     }
     catch(err){
         console.log(err)

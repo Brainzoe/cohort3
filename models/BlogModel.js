@@ -16,7 +16,7 @@ const blogSchema = new mongoose.Schema({
     message:{
         type: String,
         required: true
-    },
+    }
 });
 
 const BlogModel = mongoose.model('blog', blogSchema);

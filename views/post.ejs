@@ -40,16 +40,16 @@
     <img src="" alt="">
 </div>
 
-<form action="">
+<form action="/post-blog-api" method="post">
 
     <div class="inputBox">
-        <input type="text" placeholder="name">
-        <input type="email" placeholder="email">
+        <input type="text" placeholder="name" name="blogname">
+        <input type="email" placeholder="email" name="email">
     </div>
 
-    <input type="text" placeholder="subject" class="box">
+    <input type="text" placeholder="subject" class="box" name="subject">
 
-    <textarea placeholder="message" name="" id="" cols="30" rows="10"></textarea>
+    <input placeholder="message"  name="message"></input>
 
     <input type="submit" class="btn" value="send">
 
