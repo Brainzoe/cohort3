@@ -30,7 +30,7 @@
 
 </header>
 
-<h1 class="heading">Post Blog</h1>
+<h1 class="heading">Update Blog</h1>
 
 <!-- contact section  -->
 
@@ -40,16 +40,16 @@
     <img src="" alt="">
 </div>
 
-<form action="/post-blog-api" method="post">
+<form action="/update-blog/<%=blog._id%>?_method=PATCH" method="post">
 
     <div class="inputBox">
-        <input type="text" placeholder="name" name="blogname">
-        <input type="email" placeholder="email" name="email">
+        <input type="text" placeholder="name" name="blogname" value="<%=blog.name%>">
+        <input type="email" placeholder="email" name="email" value="<%=blog.email%>">
     </div>
 
-    <input type="text" placeholder="subject" class="box" name="subject">
+    <input type="text" placeholder="subject" class="box" name="subject" value="<%=blog.subject%>">
 
-    <input placeholder="message"  name="message"></input>
+    <input placeholder="message"  name="message" value="<%=blog.message%>"></input>
 
     <input type="submit" class="btn" value="send">
 
