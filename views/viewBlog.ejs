@@ -26,8 +26,8 @@
 
             <nav class="navbar">
                 <a href="/">home</a>
-                <a href="#">post blog</a>
-                <a href="#">view blog</a>
+                <a href="/make-post">post blog</a>
+                <a href="/view-blog">view blog</a>
             </nav>
 
         </header>
@@ -40,23 +40,38 @@
 
             <div class="box">
                 <h3>Blogs</h3>
-                <% blogs.forEach(blog => {%>
+                <% blogs.forEach(blog=> {%>
                     <div class="amount">
-                        <h2><a href="/single-view/<%=blog._id%>"><%=blog.name%></a></h2>
-                        <h4><%=blog.email;%></h4>
-                        <h5><%=blog.subject%></h5>
-                        <p><%=blog.message%></p>
+                        <h2><a href="/single-view/<%=blog._id%>">
+                                <%=blog.name%>
+                            </a></h2>
+                        <h4>
+                            <%=blog.email;%>
+                        </h4>
+                        <h5>
+                            <%=blog.subject%>
+                        </h5>
+                        <p>
+                            <%=blog.message%>
+                        </p>
                         <a href="/update-blog/<%=blog._id%>">Edit/Update Blog</a>
+                        <a href="" class="deletBtn"
+                            style="color: red; background-color: #fff; padding: .2rem; border-radius: .3rem;"
+                            data-delete="<%=blog._id%>"
+                            >
+                            delete Post
+                        </a>
+                        <hr>
                     </div>
-                    
-                <%})%>
-                
-                    
-               
-                <!-- <a href="#" class="btn">time</a> -->
+
+                    <%})%>
+
+
+
+                        <!-- <a href="#" class="btn">time</a> -->
             </div>
 
-            
+
 
 
         </section>
@@ -69,19 +84,19 @@
             <div class="box-container">
 
                 <div class="box">
-                    
+
                 </div>
 
                 <div class="box">
-                    
+
                 </div>
 
                 <div class="box">
-                    
+
                 </div>
 
                 <div class="box">
-                    
+
                 </div>
 
             </div>
@@ -108,6 +123,23 @@
 
     <!-- custom js file link -->
     <script src="js/script.js"></script>
+
+    <script>
+        const deleteBtn = document.querySelector('.deletBtn');
+        deleteBtn.addEventListener('click', (e) => {
+            // e.preventDefault();
+            fetch(`/delete-post/${deleteBtn.dataset.delete}`, {
+            method: "DELETE"
+           })
+           .then(response => {
+            response.json()
+           })
+           .then(data => {
+            console.log(data);
+            window.location.href = data.message.redirect;
+           })
+        })
+    </script>
 
 </body>
 
